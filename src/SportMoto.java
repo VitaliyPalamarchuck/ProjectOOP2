@@ -6,4 +6,3 @@ class SportMoto extends Transport{
     }
 
 }
-

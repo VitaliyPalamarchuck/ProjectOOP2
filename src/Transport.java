@@ -65,7 +65,7 @@ public abstract class Transport implements MotorBike{
     }
 
     public void bikeInfo(){ //Метод на вивід інформації
-        System.out.println("Category"+category);
+        System.out.println("Category: "+category);
         System.out.println("Name: "+ name);
         System.out.println("HorsePower "+ horsePower+" к.с.");
         System.out.println("height: "+ height+" мм");

@@ -6,4 +6,3 @@ class CruiserMoto extends Transport{
     }
 
 }
-
