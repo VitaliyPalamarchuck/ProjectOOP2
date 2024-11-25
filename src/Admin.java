@@ -15,7 +15,7 @@ public class Admin {
     }
 
     // Додаємо мотоцикл
-    public void addMoto() {
+    public void addMoto() throws InvalidMotoCategory {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Введіть категорію мотоцикла (Sport/Cruiser/Tourist):");
@@ -30,8 +30,8 @@ public class Admin {
         int tankCapacity = scanner.nextInt();
         System.out.println("Введіть ціну (євро):");
         int price = scanner.nextInt();
-        Transport newMoto;
 
+        Transport newMoto;
         switch (category) {
             case "Sport":
                 newMoto = new SportMoto(name, horsePower, height, tankCapacity, price);
@@ -43,8 +43,7 @@ public class Admin {
                 newMoto = new TouristMoto(name, horsePower, height, tankCapacity, price);
                 break;
             default:
-                System.out.println("Невірна категорія.");
-                return;
+                throw new InvalidMotoCategory("Категорія "+category+ " є некоректою");
         }
 
         MotoFactory.addMoto(newMoto); // Додаємо новий мотоцикл до фабрики
@@ -58,7 +57,7 @@ public class Admin {
         String name = scanner.nextLine();
 
         for (Transport moto : MotoFactory.getAllMotos()) {
-            if (moto.getName().equals(name)) {
+            if (moto.getName().equalsIgnoreCase(name)) {
                 MotoFactory.removeMoto(moto); // Видалення мотоцикла
                 System.out.println("Мотоцикл видалено успішно.");
                 return;

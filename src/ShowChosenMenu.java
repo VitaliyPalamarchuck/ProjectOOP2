@@ -13,7 +13,11 @@ public class ShowChosenMenu {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    admin.addMoto(); // Додаємо мотоцикл
+                    try {
+                        admin.addMoto();// Додаємо мотоцикл
+                    } catch (InvalidMotoCategory e){
+                        System.out.println("Помилка: "+e.getMessage());
+                    }
                     break;
                 case 2:
                     admin.removeMoto(); // Видаляємо мотоцикл
